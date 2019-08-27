@@ -26,28 +26,36 @@ bookList = [
 		id: 'btn5'
 	}
 ];
+class NavComponent {
+	constructor(logo) {
+		this.logo = logo;
+		this.template = `
+		<nav class="navbar navbar-light banner">
+	  <span class="navbar-brand mb-0 h1">${this.logo}</span>
+	</nav>
+		`;
+	}
+}
 
 class BookComponent {
 	constructor(title, image, id) {
 		this.title = title;
 		this.image = image;
 		this.id = id;
-		this.template = `		
+		this.template = `
 		<div class="container">
-		<div class="row">
-		<div class="col-md mt-4 ml-2">
+		<h2 class="descript">Description</h2>
+			<p id="text"></p>
+		</div>
+		<div class="books">	
 		<div class="card" style="width: 12rem;">
   		<img class="card-img-top" src=${this.image} alt="Card image cap">
   		<div class="card-body">
     	<h5 class="card-title">${title}</h5>
 		<button id=${this.id} type="button" class="btn btn-primary">Show Description</button>
-		  </div>
 		</div>
-	</div>
-</div>
-</div>
-	<h2 class="descript">Description</h2>
-	<p id="text"></p>
+		</div>
+		</div>		
 		`;
 		// Event Listener for button1
 		document.addEventListener('click', function(e) {
@@ -84,6 +92,7 @@ class BookComponent {
 					document.getElementById(
 						'text'
 					).innerText = `Obsessively watching a breakfasting couple every day to escape the pain of her losses, Rachel witnesses a shocking event that inextricably entangles her in the lives of strangers. Reprint. A #1 New York Times best-seller. Movie tie-in.`;
+					document.getElementById('btn3').innerText = 'Hide Description';
 				} else {
 					document.getElementById('text').innerText = '';
 					document.getElementById('btn3').innerText = 'Show Description';
@@ -97,6 +106,7 @@ class BookComponent {
 					document.getElementById(
 						'text'
 					).innerText = `A GAME OF THRONES is the first volume in the series. Kings and queens, knights and renegades, liars, lords and honest men... all will play the GAME OF THRONES. Summers span decades. Winter can last a lifetime. And the struggle for the Iron Throne has begun. It will stretch from the south, where heat breeds plot, lusts and intrigues; to the vast and savage eastern lands; all the way to the frozen north, where a 700-foot wall of ice protects the kingdom from the dark forces that lie beyond. The Game of Thrones. You win, or you die. Book One of A Song of Ice and Fire begins the greatest fantasy epic of the modern age. Winter is coming.`;
+					document.getElementById('btn4').innerText = 'Hide Description';
 				} else {
 					document.getElementById('text').innerText = '';
 					document.getElementById('btn4').innerText = 'Show Description';
@@ -110,6 +120,7 @@ class BookComponent {
 					document.getElementById(
 						'text'
 					).innerText = `For the first time in the new Star Wars canon, journey with us into the time after the end of Star Wars Episode VI Return of the Jedi! Writer Greg Rucka (PUNISHER, WOLVERINE, Gotham Central) and artist Marco Checchetto (AVENGERS WORLD, PUNISHER) take us past the destruction of the second Death Star - and into the chaos of a Shattered Empire. It's the explosive lead-in to this winter's blockbuster big-screen Star Wars revival, and everything you need to know is right here!`;
+					document.getElementById('btn5').innerText = 'Hide Description';
 				} else {
 					document.getElementById('text').innerText = '';
 					document.getElementById('btn5').innerText = 'Show Description';
@@ -118,12 +129,15 @@ class BookComponent {
 		});
 	}
 }
-
 class BookListComponent {
 	template = `
 	<div>
-	${bookList.map((e) => new BookComponent(e.title, e.image, e.id).template).join('')}
-	</div>
+		${new NavComponent('My Favorite Books').template}
+		</div>	
+	<div>
+	${bookList.map((e) => new BookComponent(e.title, e.image, e.id).template).join('')}	
+	</div>	
 	`;
 }
+
 document.getElementById('root').innerHTML = new BookListComponent().template;
