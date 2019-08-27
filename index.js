@@ -1,91 +1,129 @@
 // add the document root tag here
-class NavComponent {
-	constructor(navName) {
-		this.navName = navName;
-		this.template = `
-		<nav class="navbar navbar-light bg-light">
-  		<span class="navbar-brand mb-0 h1">${navName}</span>
-		</nav>		
-		`;
+bookList = [
+	{
+		title: 'Into the Wild',
+		image: 'images/intoTheWild.jpg',
+		id: 'btn1'
+	},
+	{
+		title: 'Underworld',
+		image: 'images/Underworld.jpg',
+		id: 'btn2'
+	},
+	{
+		title: 'The Girl On The Train',
+		image: 'images/girlOnTrain.jpg',
+		id: 'btn3'
+	},
+	{
+		title: 'Game of Thrones',
+		image: 'images/gameOfThrones.jpg',
+		id: 'btn4'
+	},
+	{
+		title: 'Star Wars: Shattered Empire',
+		image: 'images/starWars.jpg',
+		id: 'btn5'
 	}
-}
-class ButtonComponent {
-	constructor() {
-		this.template = `<button id="wild" type="button" class="btn btn-primary">Show Description</button>
-		<p id="text"></p>
-		`;
-		//Add the Event Listener here
-	}
-}
+];
+
 class BookComponent {
-	constructor(title, description) {
+	constructor(title, image, id) {
 		this.title = title;
-		this.template = `
-	<div class="card" style="width: 18rem;">
-  		<img class="card-img-top" src=".." alt="Card image cap">
+		this.image = image;
+		this.id = id;
+		this.template = `		
+		<div class="container">
+		<div class="row">
+		<div class="col-md mt-4 ml-2">
+		<div class="card" style="width: 12rem;">
+  		<img class="card-img-top" src=${this.image} alt="Card image cap">
   		<div class="card-body">
     	<h5 class="card-title">${title}</h5>
-		${new ButtonComponent().template}
-  		</div>
+		<button id=${this.id} type="button" class="btn btn-primary">Show Description</button>
+		  </div>
+		</div>
 	</div>
+</div>
+</div>
+	<h2 class="descript">Description</h2>
+	<p id="text"></p>
 		`;
+		// Event Listener for button1
+		document.addEventListener('click', function(e) {
+			if (e.target && e.target.id == 'btn1') {
+				if (document.getElementById('btn1').innerText == 'Show Description') {
+					document.getElementById(
+						'text'
+					).innerText = `A portrait of Chris McCandless chronicles his decision to withdraw from society and adopt the persona of Alexander Supertramp, offering insight into his beliefs about the wilderness and his tragic death in the Alaskan wilderness.`;
+					document.getElementById('btn1').innerText = 'Hide Description';
+				} else {
+					document.getElementById('text').innerText = '';
+					document.getElementById('btn1').innerText = 'Show Description';
+				}
+			}
+		});
+		// Event Listener for button2
+		document.addEventListener('click', function(e) {
+			if (e.target && e.target.id == 'btn2') {
+				if (document.getElementById('btn2').innerText == 'Show Description') {
+					document.getElementById(
+						'text'
+					).innerText = `The centuries-long struggle between vampires and their sworn enemies, the werewolves, takes a bizarre turn in modern-day Budapest when vampire warrior Selene, a Death Dealer, finds herself drawn to Michael, an inncent American recently infected with the lupine curse. Original. `;
+					document.getElementById('btn2').innerText = 'Hide Description';
+				} else {
+					document.getElementById('text').innerText = '';
+					document.getElementById('btn2').innerText = 'Show Description';
+				}
+			}
+		});
+		// Event Listener for button3
+		document.addEventListener('click', function(e) {
+			if (e.target && e.target.id == 'btn3') {
+				if (document.getElementById('btn3').innerText == 'Show Description') {
+					document.getElementById(
+						'text'
+					).innerText = `Obsessively watching a breakfasting couple every day to escape the pain of her losses, Rachel witnesses a shocking event that inextricably entangles her in the lives of strangers. Reprint. A #1 New York Times best-seller. Movie tie-in.`;
+				} else {
+					document.getElementById('text').innerText = '';
+					document.getElementById('btn3').innerText = 'Show Description';
+				}
+			}
+		});
+		// Event Listener for button4
+		document.addEventListener('click', function(e) {
+			if (e.target && e.target.id == 'btn4') {
+				if (document.getElementById('btn4').innerText == 'Show Description') {
+					document.getElementById(
+						'text'
+					).innerText = `A GAME OF THRONES is the first volume in the series. Kings and queens, knights and renegades, liars, lords and honest men... all will play the GAME OF THRONES. Summers span decades. Winter can last a lifetime. And the struggle for the Iron Throne has begun. It will stretch from the south, where heat breeds plot, lusts and intrigues; to the vast and savage eastern lands; all the way to the frozen north, where a 700-foot wall of ice protects the kingdom from the dark forces that lie beyond. The Game of Thrones. You win, or you die. Book One of A Song of Ice and Fire begins the greatest fantasy epic of the modern age. Winter is coming.`;
+				} else {
+					document.getElementById('text').innerText = '';
+					document.getElementById('btn4').innerText = 'Show Description';
+				}
+			}
+		});
+		// Event Listener for button5
+		document.addEventListener('click', function(e) {
+			if (e.target && e.target.id == 'btn5') {
+				if (document.getElementById('btn5').innerText == 'Show Description') {
+					document.getElementById(
+						'text'
+					).innerText = `For the first time in the new Star Wars canon, journey with us into the time after the end of Star Wars Episode VI Return of the Jedi! Writer Greg Rucka (PUNISHER, WOLVERINE, Gotham Central) and artist Marco Checchetto (AVENGERS WORLD, PUNISHER) take us past the destruction of the second Death Star - and into the chaos of a Shattered Empire. It's the explosive lead-in to this winter's blockbuster big-screen Star Wars revival, and everything you need to know is right here!`;
+				} else {
+					document.getElementById('text').innerText = '';
+					document.getElementById('btn5').innerText = 'Show Description';
+				}
+			}
+		});
 	}
 }
 
 class BookListComponent {
-	constructor(description) {
-		this.description = description;
-		this.bookList = [
-			{
-				title: 'Into the Wild',
-				description:
-					'A portrait of Chris McCandless chronicles his decision to withdraw from society and adopt the persona of Alexander Supertramp, offering insight into his beliefs about the wilderness and his tragic death in the Alaskan wilderness.'
-			},
-			{
-				title: 'Underworld',
-				description:
-					'The centuries-long struggle between vampires and their sworn enemies, the werewolves, takes a bizarre turn in modern-day Budapest when vampire warrior Selene, a Death Dealer, finds herself drawn to Michael, an inncent American recently infected with the lupine curse. Original. (A Sony Pictures film, written by Danny McBride, releasing September 2003, starring Kate Beckinsale, Scott Speedman, Shane Brolly, Robby Gee, Erwin Leder, Wentworth Miller, Sophia Myles, Bill Nighy, & Michael Sheen) (Horror)'
-			},
-			{
-				title: 'The Girl On The Train',
-				description:
-					'Obsessively watching a breakfasting couple every day to escape the pain of her losses, Rachel witnesses a shocking event that inextricably entangles her in the lives of strangers. Reprint. A #1 New York Times best-seller. Movie tie-in.'
-			},
-			{
-				title: 'Game of Thrones',
-				description:
-					'HBO hit series A GAME OF THRONES is based on George R. R. Martin internationally bestselling series A SONG OF ICE AND FIRE, the greatest fantasy epic of the modern age. A GAME OF THRONES is the first volume in the series. Kings and queens, knights and renegades, liars, lords and honest men... all will play the GAME OF THRONES. Summers span decades. Winter can last a lifetime. And the struggle for the Iron Throne has begun. It will stretch from the south, where heat breeds plot, lusts and intrigues; to the vast and savage eastern lands; all the way to the frozen north, where a 700-foot wall of ice protects the kingdom from the dark forces that lie beyond. The Game of Thrones. You win, or you die. Book One of A Song of Ice and Fire begins the greatest fantasy epic of the modern age. Winter is coming.'
-			},
-			{
-				title: 'Star Wars: Shattered Empire',
-				description:
-					'For the first time in the new Star Wars canon, journey with us into the time after the end of Star Wars Episode VI Return of the Jedi! Writer Greg Rucka (PUNISHER, WOLVERINE, Gotham Central) and artist Marco Checchetto (AVENGERS WORLD, PUNISHER) take us past the destruction of the second Death Star - and into the chaos of a Shattered Empire.'
-			}
-		];
-
-		var cardText = this.bookList.filter((e) => e.description);
-
-		template = `
+	template = `
 	<div>
-	${new NavComponent('My Favorite Books').template}
-	<div class="container-fluid">
-	${this.bookList.map((e) => new BookComponent(e).template).join('')}
-	${this.cardText.map((e) => new BookComponent(e).template).join('')}
+	${bookList.map((e) => new BookComponent(e.title, e.image, e.id).template).join('')}
 	</div>
-    </div>
 	`;
-	}
 }
 document.getElementById('root').innerHTML = new BookListComponent().template;
-
-// document.addEventListener('click', function(e) {
-// 	if (e.target && e.target.id == 'wild') {
-// 		if (!document.getElementsById('text').innerText) {
-// 			document.getElementById('text').innerText = text;
-// 			document.getElementById('wild').innerText = 'Hide Description';
-// 		} else {
-// 			document.getElementById('text').innerText = text;
-// 			document.getElementById('wild').innerText = 'Show Description';
-// 		}
-// 	}
-// });
