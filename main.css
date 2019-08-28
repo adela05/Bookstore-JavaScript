@@ -6,9 +6,27 @@ body {
 .banner {
 	background-color: cornflowerblue;
 }
+.logo {
+	font-size: 35px;
+}
+.note {
+	position: absolute;
+	top: 83%;
+}
 .descript {
-	font-size: 18px;
+	font-size: 23px;
+	font-weight: bold;
 }
 .books {
 	float: left;
+}
+.btn-danger,
+.btn-primary {
+	font-size: 15px;
+}
+.card-title {
+	font-weight: bold;
+}
+#text {
+	line-height: 1.5;
 }
